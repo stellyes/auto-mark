@@ -44,14 +44,14 @@ def apply_watermark(input_image_path, output_image_path):
     wm_height = int(watermark.height * (wm_width / watermark.width))
     watermark = watermark.resize((wm_width, wm_height), Image.LANCZOS)
 
-    # Apply opacity (90%)
+    # Apply opacity (75%)
     alpha = watermark.split()[-1]
-    alpha = alpha.point(lambda i: i * 0.9)  # Adjust transparency here
+    alpha = alpha.point(lambda i: i * 0.75)  # Adjust transparency here
     watermark.putalpha(alpha)
 
     # Position watermark in bottom-right corner
     pos_x = base_image.width - watermark.width - 50
-    pos_y = base_image.height - watermark.height - 50
+    pos_y = 50 # base_image.height - watermark.height - 50 
     position = (pos_x, pos_y)
 
     # Create transparent layer same size as base image
